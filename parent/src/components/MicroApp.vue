@@ -19,6 +19,7 @@ export default {
     this.microApp = loadMicroApp(getMicroInfo, { singular: true });
   },
   beforeDestroy() {
+    console.log('beforeDestroy...');
     this.microApp.unmount();
   },
   methods: {

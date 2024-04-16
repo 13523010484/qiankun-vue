@@ -18,6 +18,7 @@
           >
         </el-breadcrumb-item>
       </el-breadcrumb>
+      <!-- 可以不写，写了之后未指定了子应用挂载位置 -->
       <div id="container-child-app1"></div>
     </container-main>
     <router-view />
@@ -51,7 +52,8 @@ export default {
 
     handleJumpChildApp1() {
       this.$router.push({
-        path: '/child-app1',
+        // path: '/child-app1',// 修改前
+        path: '/child-app1/', // 修改后
       });
     },
   },

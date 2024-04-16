@@ -37,7 +37,9 @@ const routes = [
     component: AboutView,
   },
   {
-    path: '/child-app1',
+    // path: '/child-app1',// 修改前
+    path: '/child-app1/*', // 修改后
+    name: 'MicroApp',
     component: MicroApp,
   },
 ];
