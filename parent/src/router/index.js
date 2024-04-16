@@ -6,6 +6,25 @@ import MicroApp from '../components/MicroApp.vue';
 
 Vue.use(VueRouter);
 
+const { isNavigationFailure, NavigationFailureType } = VueRouter;
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((failure) => {
+    if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
+      throw failure;
+    }
+  });
+};
+
+const originalReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(location) {
+  return originalReplace.call(this, location).catch((failure) => {
+    if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
+      throw failure;
+    }
+  });
+};
+
 const routes = [
   {
     path: '/',
@@ -26,11 +45,6 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes,
-});
-
-router.beforeEach((to, from, next) => {
-  console.log('to::', to, 'from::', from);
-  next();
 });
 
 export default router;
