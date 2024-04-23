@@ -1,5 +1,5 @@
 <template>
-  <div id="container-child-app1"></div>
+  <div id="container-sub-app"></div>
 </template>
 
 <script>

@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
+// 这部分代码要写在文件顶部，即 qiankun 文档中的 public-path.js 文件中的代码
 if (window.__POWERED_BY_QIANKUN__) {
   /* eslint-disable @typescript-eslint/camelcase */
   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;

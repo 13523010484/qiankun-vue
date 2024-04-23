@@ -13,13 +13,29 @@
           >
         </el-breadcrumb-item>
         <el-breadcrumb-item>
-          <el-button type="text" @click="handleJumpChildApp1"
-            >子应用 home</el-button
+          <el-button type="text" @click="handleJumpChildVue"
+            >子应用 vue</el-button
+          >
+        </el-breadcrumb-item>
+        <el-breadcrumb-item>
+          <el-button type="text" @click="handleJumpChildReact"
+            >子应用 react</el-button
           >
         </el-breadcrumb-item>
       </el-breadcrumb>
       <!-- 可以不写，写了之后未指定了子应用挂载位置 -->
-      <div id="container-child-app1"></div>
+      <div id="container-sub-app"></div>
+      <div v-for="item in messages" :key="item.id">
+        {{ item.value }}
+      </div>
+      <el-form :inline="true">
+        <el-form-item label="消息：">
+          <el-input v-model="newMessage" placeholder="请输入内容"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="sendMessage">发送</el-button>
+        </el-form-item>
+      </el-form>
     </container-main>
     <router-view />
   </div>
@@ -34,10 +50,66 @@ export default {
     ContainerMain,
   },
   data() {
-    return {};
+    return {
+      messages: [],
+      newMessage: '',
+      socket: null,
+    };
   },
 
+  created() {
+    // this.initializeWebSocketConnection();
+  },
+  beforeDestroy() {
+    // if (this.socket) {
+    //   this.socket.close();
+    // }
+  },
   methods: {
+    initializeWebSocketConnection() {
+      this.socket = new WebSocket('ws://localhost:8083'); // 你的WebSocket服务器地址
+      // this.socket = new WebSocket('ws://192.168.6.102:9001'); // 你的WebSocket服务器地址
+
+      this.socket.onopen = () => {
+        console.log('WebSocket connection opened');
+        // 连接打开后，你可以选择发送一条消息或者进行身份验证等
+        this.socket.send(
+          JSON.stringify({
+            value: this.newMessage,
+          })
+        );
+      };
+
+      this.socket.onmessage = (event) => {
+        console.log('接收服务器传过来的 event.data::', event.data);
+        const res = JSON.parse(event.data);
+        // 接收到服务器发来的消息
+        this.messages.push(res.data);
+      };
+
+      this.socket.onerror = (error) => {
+        console.error('WebSocket Error:', error);
+      };
+
+      this.socket.onclose = () => {
+        console.log('WebSocket connection closed');
+      };
+    },
+
+    sendMessage() {
+      // console.log('sendMessage this.socket::', this.socket);
+      // if (this.socket.readyState === WebSocket.OPEN) {
+      //   this.socket.send(
+      //     JSON.stringify({
+      //       value: this.newMessage,
+      //     })
+      //   );
+      //   this.newMessage = '';
+      // } else {
+      //   console.error('Cannot send message, the socket is not open.');
+      // }
+    },
+
     handleJumpParentHome() {
       this.$router.push({
         path: '/',
@@ -50,10 +122,15 @@ export default {
       });
     },
 
-    handleJumpChildApp1() {
+    handleJumpChildVue() {
       this.$router.push({
-        // path: '/child-app1',// 修改前
-        path: '/child-app1/', // 修改后
+        path: '/child-app1/',
+      });
+    },
+
+    handleJumpChildReact() {
+      this.$router.push({
+        path: '/sub-app-react/',
       });
     },
   },
