@@ -18,6 +18,13 @@ module.exports = defineConfig({
           '/api': '/api',
         },
       },
+      '/tableApi': {
+        target: 'http://192.168.6.103:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '/tableApi': '/api',
+        },
+      },
     },
   },
 });
