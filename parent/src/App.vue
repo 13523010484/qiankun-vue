@@ -129,22 +129,10 @@ export default {
     },
 
     handleJumpChildVue() {
-      // 在主应用当中，先跳转到第一个子应用中，再跳转到第二个子应用时，显示的仍然是第一个子应用
-      // 原因，在跳转到第二个子应用时，第二个子应用的生命周期函数未执行
-      // this.$router.push({
-      //   path: '/child-app1/',
-      // });
-      // 可以解决上面路由跳转的问题
       window.location.href = '/child-app1/';
     },
 
     handleJumpChildReact() {
-      // 在主应用当中，先跳转到第一个子应用中，再跳转到第二个子应用时，显示的仍然是第一个子应用
-      // 原因，在跳转到第二个子应用时，第二个子应用的生命周期函数未执行
-      // this.$router.push({
-      //   path: '/sub-app-react/',
-      // });
-      // 可以解决上面路由跳转的问题
       window.location.href = '/sub-app-react/';
     },
   },
