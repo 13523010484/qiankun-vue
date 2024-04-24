@@ -13,14 +13,20 @@
           >
         </el-breadcrumb-item>
         <el-breadcrumb-item>
+          <!-- 方式一、通过 history.pushState() 方式跳转；方式三、子应用之间通过 location.href 跳转 -->
           <el-button type="text" @click="handleJumpChildVue"
             >子应用 vue</el-button
           >
+          <!-- 方式二、子应用之间通过标签进行跳转 -->
+          <!-- <a href="/child-app1/">子应用 vue</a> -->
         </el-breadcrumb-item>
         <el-breadcrumb-item>
+          <!-- 方式一、通过 history.pushState() 方式跳转；方式三、子应用之间通过 location.href 跳转 -->
           <el-button type="text" @click="handleJumpChildReact"
             >子应用 react</el-button
           >
+          <!-- 方式二、子应用之间通过标签进行跳转 -->
+          <!-- <a href="/sub-app-react/">子应用 react</a> -->
         </el-breadcrumb-item>
       </el-breadcrumb>
       <!-- 可以不写，写了之后未指定了子应用挂载位置 -->
@@ -123,15 +129,23 @@ export default {
     },
 
     handleJumpChildVue() {
-      this.$router.push({
-        path: '/child-app1/',
-      });
+      // 在主应用当中，先跳转到第一个子应用中，再跳转到第二个子应用时，显示的仍然是第一个子应用
+      // 原因，在跳转到第二个子应用时，第二个子应用的生命周期函数未执行
+      // this.$router.push({
+      //   path: '/child-app1/',
+      // });
+      // 可以解决上面路由跳转的问题
+      window.location.href = '/child-app1/';
     },
 
     handleJumpChildReact() {
-      this.$router.push({
-        path: '/sub-app-react/',
-      });
+      // 在主应用当中，先跳转到第一个子应用中，再跳转到第二个子应用时，显示的仍然是第一个子应用
+      // 原因，在跳转到第二个子应用时，第二个子应用的生命周期函数未执行
+      // this.$router.push({
+      //   path: '/sub-app-react/',
+      // });
+      // 可以解决上面路由跳转的问题
+      window.location.href = '/sub-app-react/';
     },
   },
 };
