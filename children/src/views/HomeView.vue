@@ -1,5 +1,53 @@
 <template>
   <div class="home">
+    <el-row
+      style="
+        border: 1px #ddd solid;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 24px;
+      "
+    >
+      <el-col :span="4">
+        <p>静态图片资源</p>
+        <el-image
+          style="width: 100px; height: 100px"
+          :src="require('@/assets/01.jpg')"
+          fit="scale-down"
+        ></el-image>
+      </el-col>
+      <el-col :span="4">
+        <p>绝对定位静态图片资源</p>
+        <el-image
+          style="width: 100px; height: 100px"
+          :src="require('@/assets/02.jpg')"
+          fit="scale-down"
+          alt="加载失败"
+        ></el-image>
+      </el-col>
+      <el-col :span="4">
+        <p>服务端资源</p>
+        <el-image
+          style="width: 100px; height: 100px"
+          :src="'https://img1.baidu.com/it/u=336092891,1835658731&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=889'"
+          fit="scale-down"
+          alt="加载失败"
+        ></el-image>
+      </el-col>
+      <el-col :span="4">
+        <p>相对定位的静态资源</p>
+        <el-image
+          style="width: 100px; height: 100px"
+          src="../assets/02.jpg"
+          fit="scale-down"
+          alt="加载失败"
+        ></el-image>
+      </el-col>
+      <el-col :span="4">
+        <p>background 图片</p>
+        <div class="img-bgc"></div>
+      </el-col>
+    </el-row>
     <el-form
       ref="ruleForm"
       :model="form"
@@ -88,3 +136,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.img-bgc {
+  width: 100px;
+  height: 100px;
+  background: url('../assets/02.jpg') center center no-repeat;
+  background-size: 100px 100px;
+}
+</style>

@@ -1,3 +1,5 @@
+// 动态设置 publicPath
+import './public-path';
 import Vue from 'vue';
 import App from './App.vue';
 import routes from './router';
@@ -9,11 +11,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
-// 这部分代码要写在文件顶部，即 qiankun 文档中的 public-path.js 文件中的代码
-if (window.__POWERED_BY_QIANKUN__) {
-  /* eslint-disable @typescript-eslint/camelcase */
-  __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
-}
+// 将下面这段代码放置在 main.js 中会产生图片无法正确加载子应用图片的问题，原因子项目的图片转发地址不对，导致无法加载
+// 按照文档将这部分代码提到外部文件中，导入到 main.js 中来，确保在 webpack 打包之前设置资源路径
+// if (window.__POWERED_BY_QIANKUN__) {
+//   /* eslint-disable @typescript-eslint/camelcase */
+//   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
+// }
 
 let router = null;
 let instance = null;
