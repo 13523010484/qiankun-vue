@@ -15,6 +15,7 @@
           :src="require('@/assets/01.jpg')"
           fit="scale-down"
         ></el-image>
+        <div></div>
       </el-col>
       <el-col :span="4">
         <p>绝对定位静态图片资源</p>
@@ -38,7 +39,7 @@
         <p>相对定位的静态资源</p>
         <el-image
           style="width: 100px; height: 100px"
-          src="../assets/02.jpg"
+          :src="require('../assets/02.jpg')"
           fit="scale-down"
           alt="加载失败"
         ></el-image>
