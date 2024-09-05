@@ -2,11 +2,12 @@ const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/child-app1/',
+  // publicPath: '/',
   devServer: {
     headers: {
       'Access-Control-Allow-Origin': '*'
-    }
+    },
+    port: '8081'
   },
   configureWebpack: {
     output: {

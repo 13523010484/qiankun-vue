@@ -13,9 +13,19 @@
           >
         </el-breadcrumb-item>
         <el-breadcrumb-item>
+<<<<<<< Updated upstream
           <!-- 方式一、通过 history.pushState() 方式跳转；方式三、子应用之间通过 location.href 跳转 -->
           <el-button type="text" @click="handleJumpChildVue"
             >子应用 vue</el-button
+=======
+          <el-button type="text" @click="handleJumpChildApp1"
+            >子应用 vue</el-button
+          >
+        </el-breadcrumb-item>
+        <el-breadcrumb-item>
+          <el-button type="text" @click="handleJumpSecondApp1"
+            >子应用 react</el-button
+>>>>>>> Stashed changes
           >
           <!-- 方式二、子应用之间通过标签进行跳转 -->
           <!-- <a href="/child-app1/">子应用 vue</a> -->
@@ -48,10 +58,10 @@
 </template>
 
 <script>
-import ContainerMain from './components/ContainerMain.vue';
+import ContainerMain from "./components/ContainerMain.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     ContainerMain,
   },
@@ -118,22 +128,35 @@ export default {
 
     handleJumpParentHome() {
       this.$router.push({
-        path: '/',
+        path: "/",
       });
     },
 
     handleJumpParentAbout() {
       this.$router.push({
-        path: '/about',
+        path: "/about",
       });
     },
 
+<<<<<<< Updated upstream
     handleJumpChildVue() {
       window.location.href = '/child-app1/';
     },
 
     handleJumpChildReact() {
       window.location.href = '/sub-app-react/';
+=======
+    handleJumpChildApp1() {
+      this.$router.push({
+        path: "/child-app1/",
+      });
+    },
+
+    handleJumpSecondApp1() {
+      this.$router.push({
+        path: "/sub-app-react/",
+      });
+>>>>>>> Stashed changes
     },
   },
 };

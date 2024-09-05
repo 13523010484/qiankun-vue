@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
-import MicroApp from '../components/MicroApp.vue';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import AboutView from "../views/AboutView.vue";
+import MicroApp from "../components/MicroApp.vue";
 
 Vue.use(VueRouter);
 
@@ -27,11 +27,12 @@ VueRouter.prototype.replace = function replace(location) {
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: HomeView,
   },
   {
+<<<<<<< Updated upstream
     path: '/about/*',
     name: 'about',
     component: AboutView,
@@ -46,12 +47,28 @@ const routes = [
     // 子应用2 的路由配置
     path: '/sub-app-react/*',
     name: 'MicroApp',
+=======
+    path: "/about",
+    name: "about",
+    component: AboutView,
+  },
+  {
+    // path: '/child-app1',// 修改前
+    path: "/child-app1/*", // 修改后
+    name: "MicroApp",
+    component: MicroApp,
+  },
+  {
+    // path: '/child-app1',// 修改前
+    path: "/sub-app-react", // 修改后
+    name: "MicroApp",
+>>>>>>> Stashed changes
     component: MicroApp,
   },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes,
 });
 

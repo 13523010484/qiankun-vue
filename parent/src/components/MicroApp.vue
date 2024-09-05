@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import { loadMicroApp } from 'qiankun';
-import actions from '../../actions.js';
+import { loadMicroApp } from "qiankun";
+import actions from "../../actions.js";
 
 export default {
-  name: 'microApp',
+  name: "microApp",
   mixins: [actions],
   data() {
     return {
@@ -21,19 +21,19 @@ export default {
     });
   },
   beforeDestroy() {
-    console.log('beforeDestroy...');
-    this.microApp.unmount();
+    console.log("beforeDestroy...");
+    // this.microApp.unmount();
   },
   methods: {
     // 手动加载微应用
     getMicroInfo() {
-      const appIdentifying = this.$route.path.split('/')[1];
+      const appIdentifying = this.$route.path.split("/")[1];
       let data = {};
       const href = window.location.host;
       for (let i = 0; i < document.subApps.length; i++) {
         const element = document.subApps[i];
         if (element.activeRule.includes(appIdentifying)) {
-          if (typeof element.entry !== 'string') {
+          if (typeof element.entry !== "string") {
             data = {
               ...element,
               entry: element.entry[href]
@@ -46,8 +46,8 @@ export default {
           data.props = {
             token: {
               userInfo: {
-                userName: '小明',
-                userId: '123',
+                userName: "小明",
+                userId: "123",
                 date: new Date().toLocaleString(),
               },
             },
@@ -56,7 +56,7 @@ export default {
           break;
         }
       }
-      console.log('data::', data);
+      console.log("data::", data);
       return data;
     },
   },
