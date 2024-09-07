@@ -11,7 +11,6 @@ document.subApps = [
   //   container: "#container-sub-app",
   //   activeRule: "/sub-app-react",
   // },
-
   // 部署
   {
     name: "childApp1",
