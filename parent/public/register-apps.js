@@ -1,7 +1,7 @@
 document.subApps = [
   // {
   //   name: "childApp1",
-  //   entry: "//localhost:8081",
+  //   entry: "//localhost:8088",
   //   container: "#container-sub-app",
   //   activeRule: "/child-app1",
   // },
@@ -14,7 +14,7 @@ document.subApps = [
   // 部署
   {
     name: "childApp1",
-    entry: "http://192.168.18.171:8080",
+    entry: "//192.168.18.171:8088",
     container: "#container-sub-app",
     activeRule: "/child-app1",
   },
