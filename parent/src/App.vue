@@ -13,19 +13,9 @@
           >
         </el-breadcrumb-item>
         <el-breadcrumb-item>
-<<<<<<< Updated upstream
           <!-- 方式一、通过 history.pushState() 方式跳转；方式三、子应用之间通过 location.href 跳转 -->
           <el-button type="text" @click="handleJumpChildVue"
             >子应用 vue</el-button
-=======
-          <el-button type="text" @click="handleJumpChildApp1"
-            >子应用 vue</el-button
-          >
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>
-          <el-button type="text" @click="handleJumpSecondApp1"
-            >子应用 react</el-button
->>>>>>> Stashed changes
           >
           <!-- 方式二、子应用之间通过标签进行跳转 -->
           <!-- <a href="/child-app1/">子应用 vue</a> -->
@@ -68,7 +58,7 @@ export default {
   data() {
     return {
       messages: [],
-      newMessage: '',
+      newMessage: "",
       socket: null,
     };
   },
@@ -83,11 +73,11 @@ export default {
   },
   methods: {
     initializeWebSocketConnection() {
-      this.socket = new WebSocket('ws://localhost:8083'); // 你的WebSocket服务器地址
+      this.socket = new WebSocket("ws://localhost:8083"); // 你的WebSocket服务器地址
       // this.socket = new WebSocket('ws://192.168.6.102:9001'); // 你的WebSocket服务器地址
 
       this.socket.onopen = () => {
-        console.log('WebSocket connection opened');
+        console.log("WebSocket connection opened");
         // 连接打开后，你可以选择发送一条消息或者进行身份验证等
         this.socket.send(
           JSON.stringify({
@@ -97,18 +87,18 @@ export default {
       };
 
       this.socket.onmessage = (event) => {
-        console.log('接收服务器传过来的 event.data::', event.data);
+        console.log("接收服务器传过来的 event.data::", event.data);
         const res = JSON.parse(event.data);
         // 接收到服务器发来的消息
         this.messages.push(res.data);
       };
 
       this.socket.onerror = (error) => {
-        console.error('WebSocket Error:', error);
+        console.error("WebSocket Error:", error);
       };
 
       this.socket.onclose = () => {
-        console.log('WebSocket connection closed');
+        console.log("WebSocket connection closed");
       };
     },
 
@@ -138,25 +128,12 @@ export default {
       });
     },
 
-<<<<<<< Updated upstream
     handleJumpChildVue() {
-      window.location.href = '/child-app1/';
+      window.location.href = "/child-app1/";
     },
 
     handleJumpChildReact() {
-      window.location.href = '/sub-app-react/';
-=======
-    handleJumpChildApp1() {
-      this.$router.push({
-        path: "/child-app1/",
-      });
-    },
-
-    handleJumpSecondApp1() {
-      this.$router.push({
-        path: "/sub-app-react/",
-      });
->>>>>>> Stashed changes
+      window.location.href = "/sub-app-react/";
     },
   },
 };

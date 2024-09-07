@@ -32,37 +32,20 @@ const routes = [
     component: HomeView,
   },
   {
-<<<<<<< Updated upstream
-    path: '/about/*',
-    name: 'about',
-    component: AboutView,
-  },
-  {
-    // 子应用1 的路由配置，* 为匹配当前路由下的所有路由
-    path: '/child-app1/*',
-    name: 'MicroApp',
-    component: MicroApp,
-  },
-  {
-    // 子应用2 的路由配置
-    path: '/sub-app-react/*',
-    name: 'MicroApp',
-=======
-    path: "/about",
+    path: "/about/*",
     name: "about",
     component: AboutView,
   },
   {
-    // path: '/child-app1',// 修改前
-    path: "/child-app1/*", // 修改后
+    // 子应用1 的路由配置，* 为匹配当前路由下的所有路由
+    path: "/child-app1/*",
     name: "MicroApp",
     component: MicroApp,
   },
   {
-    // path: '/child-app1',// 修改前
-    path: "/sub-app-react", // 修改后
+    // 子应用2 的路由配置
+    path: "/sub-app-react/*",
     name: "MicroApp",
->>>>>>> Stashed changes
     component: MicroApp,
   },
 ];
