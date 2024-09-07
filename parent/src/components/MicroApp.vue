@@ -16,9 +16,7 @@ export default {
   },
   mounted() {
     const getMicroInfo = this.getMicroInfo();
-    this.microApp = loadMicroApp(getMicroInfo, {
-      singular: true,
-    });
+    this.microApp = loadMicroApp(getMicroInfo);
   },
   beforeDestroy() {
     console.log("beforeDestroy...");
