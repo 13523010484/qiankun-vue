@@ -14,7 +14,7 @@ document.subApps = [
   // 部署
   {
     name: "childApp1",
-    entry: "//192.168.18.171:8088",
+    entry: "//192.168.18.171:8088/child-app1/",
     container: "#container-sub-app",
     activeRule: "/child-app1",
   },
