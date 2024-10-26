@@ -23,7 +23,6 @@ const routes = [
 
 const router = new VueRouter({
   // mode: 'history',
-  base: __webpack_public_path__ ? '/child-app1/' : '',
   routes
 });
 

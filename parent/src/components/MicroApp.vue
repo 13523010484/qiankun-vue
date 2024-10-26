@@ -20,7 +20,7 @@ export default {
   },
   beforeDestroy() {
     console.log("beforeDestroy...");
-    // this.microApp.unmount();
+    this.microApp.unmount();
   },
   methods: {
     // 手动加载微应用

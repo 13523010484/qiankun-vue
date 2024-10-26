@@ -133,7 +133,9 @@ export default {
     },
 
     handleJumpChildReact() {
-      window.location.href = "/sub-app-react/";
+      this.$router.push({
+        path: "/sub-app-react/",
+      });
     },
   },
 };

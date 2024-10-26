@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  // publicPath: '/',
+  publicPath: '/child-app1/',
   devServer: {
     headers: {
       'Access-Control-Allow-Origin': '*'
