@@ -1,80 +1,52 @@
-// app.js
-/**
- * 下面的代码写了一个 todolist 的增删查的接口，目的有两个：
- * 1、验证主项目中配置 proxy 代理访问子项目的接口
- * 2、验证主项目中是否可以正确加载子项目的静态资源，和服务端的资源
- * **/
 const Koa = require('koa');
-const Router = require('koa-router');
-const bodyParser = require('koa-bodyparser');
-const { v4: uuidv4 } = require('uuid');
+
+const { koaBody } = require('koa-body');
+const jsonError = require('koa-json-error');
+const parameter = require('koa-parameter');
+const koajwt = require('koa-jwt');
+
+const { connectDB } = require('./db/index.js');
+
+const user = require('./routes/user.js');
+const department = require('./routes/department.js');
+const departmentApplication = require('./routes/departmentApplication.js');
+const certificate = require('./routes/certificate.js');
+const post = require('./routes/post.js');
+const userApplication = require('./routes/userApplication.js');
 
 const app = new Koa();
-const router = new Router({
-  prefix: '/api',
-}); // 设置前缀
 
-// 使用bodyParser中间件解析请求体
-app.use(bodyParser());
+// 登录校验，除了登录、注册的路由不需要校验外，其他都需要校验
+app.use(
+  koajwt({
+    secret: 'jqh-server-jwt',
+  }).unless({
+    path: [/^\/api\/user\/login/],
+  })
+);
 
-const getCurrentDateTime = () => {
-  const now = new Date();
+// 注意 bodyParser router 有先后顺序
+app.use(jsonError());
+app.use(
+  koaBody({
+    multipart: true, // 支持文件上传
+    formidable: {
+      maxFileSize: 2000 * 1024 * 1024, // 限制文件上传大小，例如2GB
+    },
+  })
+);
+app.use(parameter(app));
 
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1; // 注意，JavaScript中的月份是从0开始的，所以需要加1
-  const date = now.getDate();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
+// 连接数据库
+connectDB();
 
-  // 为了保证格式统一，当值小于10时前面补0
-  const formattedMonth = month < 10 ? `0${month}` : month;
-  const formattedDate = date < 10 ? `0${date}` : date;
-  const formattedHours = hours < 10 ? `0${hours}` : hours;
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-  return `${year}-${formattedMonth}-${formattedDate} ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-};
+app.use(user.routes()).use(user.allowedMethods());
+app.use(department.routes()).use(department.allowedMethods());
+app
+  .use(departmentApplication.routes())
+  .use(departmentApplication.allowedMethods());
+app.use(certificate.routes()).use(certificate.allowedMethods());
+app.use(post.routes()).use(post.allowedMethods());
+app.use(userApplication.routes()).use(userApplication.allowedMethods());
 
-const tableData = [];
-
-// 带有前缀的路由
-router.get('/table/list', (ctx, next) => {
-  ctx.body = {
-    data: tableData,
-  };
-});
-
-// 创建POST接口
-router.post('/table/save', async (ctx, next) => {
-  const newData = ctx.request.body;
-  console.log('newData::', newData);
-  tableData.push({
-    id: uuidv4(),
-    date: getCurrentDateTime(),
-    ...newData,
-  });
-
-  ctx.body = {
-    status: 200,
-    message: 'success',
-  };
-});
-
-// 创建POST接口
-router.post('/table/del', async (ctx, next) => {
-  const { id } = ctx.request.body;
-  const index = tableData.findIndex((item) => item.id == id);
-  tableData.splice(index, 1);
-
-  ctx.body = {
-    status: 200,
-    message: 'success',
-  };
-});
-
-app.use(router.routes()).use(router.allowedMethods());
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+app.listen(3000);
