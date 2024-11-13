@@ -1,16 +1,21 @@
 <template>
   <div id="app">
-    <!-- <div>
+    <div>
       <p>当前加载的是子系统页面...</p>
       <p>获取平台的登录用户，登录时间</p>
       <p>登录用户：{{ userInfo.userName }}</p>
       <p>登录时间：{{ userInfo.date }}</p>
+<<<<<<< HEAD:children/vue2/src/App.vue
     </div> -->
     ceui a dsasd
     <nav>
+=======
+    </div>
+    <!-- <nav>
+>>>>>>> 25f8e5dd2736587f3abd1552297cb193336e9e47:children/src/App.vue
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </nav>
+    </nav> -->
     <router-view />
   </div>
 </template>

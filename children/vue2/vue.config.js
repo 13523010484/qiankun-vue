@@ -9,7 +9,11 @@ module.exports = defineConfig({
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
+<<<<<<< HEAD:children/vue2/vue.config.js
     port: 8081
+=======
+    port: '8088'
+>>>>>>> 25f8e5dd2736587f3abd1552297cb193336e9e47:children/vue.config.js
   },
   configureWebpack: {
     output: {
