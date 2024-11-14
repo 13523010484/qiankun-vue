@@ -1,8 +1,8 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import AboutView from "../views/AboutView.vue";
-import MicroApp from "../components/MicroApp.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import AboutView from '../views/AboutView.vue';
+import MicroApp from '../components/MicroApp.vue';
 
 Vue.use(VueRouter);
 
@@ -27,38 +27,32 @@ VueRouter.prototype.replace = function replace(location) {
 
 const routes = [
   {
-    path: "/",
-    name: "home",
+    path: '/',
+    name: 'home',
     component: HomeView,
   },
   {
-    path: "/about/*",
-    name: "about",
+    path: '/about/*',
+    name: 'about',
     component: AboutView,
   },
   {
     // 子应用1 的路由配置，* 为匹配当前路由下的所有路由
-    path: "/child-app1/*",
-    name: "MicroApp",
+    path: '/child-app1/*',
+    name: 'MicroApp',
     component: MicroApp,
   },
   {
     // 子应用2 的路由配置
-    path: "/sub-app-react/*",
-    name: "MicroApp",
-    component: MicroApp,
-  },
-  {
-    // 子应用2 的路由配置
-    path: '/sub-app-react-test/*',
+    path: '/sub-app-react/*',
     name: 'MicroApp',
     component: MicroApp,
   },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: "/shch",
+  mode: 'history',
+  base: '/shch',
   routes,
 });
 
