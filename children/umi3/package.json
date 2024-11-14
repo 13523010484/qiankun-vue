@@ -23,11 +23,12 @@
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
     "react": "17.x",
-    "react-dom": "17.x"
+    "react-dom": "17.x",
+    "umi": "^3.2.3"
   },
   "devDependencies": {
     "@umijs/plugin-qiankun": "2.44.1",
-    "@umijs/preset-react": "^1.2.2",
-    "umi": "^3.0.0"
-  }
+    "@umijs/preset-react": "^1.2.2"
+  },
+  "__npminstall_done": false
 }
