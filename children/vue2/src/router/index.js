@@ -23,11 +23,8 @@ const routes = [
 
 const router = new VueRouter({
   // mode: 'history',
-<<<<<<< HEAD:children/vue2/src/router/index.js
   // base: process.env.BASE_URL,
-  base: window.__POWERED_BY_QIANKUN__ ? '/child-app2/' : '/',
-=======
->>>>>>> 25f8e5dd2736587f3abd1552297cb193336e9e47:children/src/router/index.js
+  // base: window.__POWERED_BY_QIANKUN__ ? '/child-app21/' : '/',
   routes
 });
 

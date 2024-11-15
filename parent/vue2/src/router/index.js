@@ -52,7 +52,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: '/shch',
+  // base: '/shch',
   routes,
 });
 
