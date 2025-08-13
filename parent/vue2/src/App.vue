@@ -44,7 +44,7 @@
           >
         </el-form-item>
       </el-form>
-      测试 jenkins 自动构建部署功能 {{ getCurrentDateTime() }}
+      测试 jenkins 自动构建部署功能1111111
     </container-main>
     <router-view />
   </div>
