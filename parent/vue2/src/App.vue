@@ -44,7 +44,7 @@
           >
         </el-form-item>
       </el-form>
-      测试 jenkins 自动构建部署功能1111111
+      测试 jenkins 自动构建部署功能2222
     </container-main>
     <router-view />
   </div>
@@ -75,18 +75,6 @@ export default {
     // }
   },
   methods: {
-    getCurrentDateTime() {
-      const now = new Date();
-
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从0开始，需要+1
-      const day = String(now.getDate()).padStart(2, '0');
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-
-      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    },
     initializeWebSocketConnection() {
       this.socket = new WebSocket('ws://localhost:8083'); // 你的WebSocket服务器地址
       // this.socket = new WebSocket('ws://192.168.6.102:9001'); // 你的WebSocket服务器地址
