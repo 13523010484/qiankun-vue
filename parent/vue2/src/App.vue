@@ -40,16 +40,11 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="sendMessage"
-            >发送哈航啊哈航啊sssss</el-button
+            >发送哈航啊哈航啊</el-button
           >
         </el-form-item>
       </el-form>
-      <img
-        src="@/assets/prefixIcon.svg"
-        alt="SVG Image"
-        style="background: greenyellow"
-      />
-      <img src="@/assets/search.svg" alt="SVG Image" style="background: pink" />
+      测试 jenkins 自动构建部署功能 {{ Date.now() }}
     </container-main>
     <router-view />
   </div>
