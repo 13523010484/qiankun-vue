@@ -44,7 +44,7 @@
           >
         </el-form-item>
       </el-form>
-      测试 jenkins 自动构建部署功能555562212222222222
+      测试 jenkins 自动构建部署功能1
     </container-main>
     <router-view />
   </div>
